@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Profile Page</title>
+    <style>
+        #background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body id="my-background">
+
+    <div id="background-container"></div>
+
+    <div class="nav3 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
+        <h1 class="text-2xl font-bold">My Profile</h1>
+        <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+    </div>
+
+    <div class="container mx-auto mt-8 main-container">
+        <div class="flex justify-center">
+            <div class="max-w-sm bg-gray-300 p-8 rounded border-2 border-black overflow-hidden shadow-lg">
+                <div class="px-6 py-4">
+                    <h2 class="text-lg text-center text-green-700 font-bold mb-2">{{user.first_name}} {{user.last_name}}</h2>
+                    <img src="{{ url_for('static', filename='uploads/' + user.user_image) }}" alt="Profile Picture" class="w-full">
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p class="text-gray-700 text-base mb-2">Bio:</p>
+                        <ul class="list-disc pl-6">
+                            <li>{{user.user_description}}</li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-gray-700 text-base mb-2">Location:</p>
+                        <ul class="list-disc pl-6">
+                            <li>{{user.user_location}}</li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-gray-700 text-base mb-2">Can Host?</p>
+                        <ul class="list-disc pl-6">
+                            <li>{{user.can_host}}</li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-gray-700 text-base mb-2">Contact Information:</p>
+                        <ul class="list-disc pl-6">
+                            <li>Email: {{user.email}}</li>
+                            <li>Phone: {{user.phone_number}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES('#background-container')
+    </script>
+    
+</body>
+</html>

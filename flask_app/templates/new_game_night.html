@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>Host Game</title>
+</head>
+<body id ="my-background">
+  <div class="nav3 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
+    <h1 class="text-2xl font-bold">New Game Night</h1>
+    <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+  </div>
+
+  <div class="container mx-auto mt-8">
+    <div class="content bg-gray-300 rounded-lg border-2 border-black p-8">
+      <form action="/new/night/entry" method="post">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="game_date">Date</label>
+            <input type="date" id="game_date" name="game_date" class="border border-gray-300 rounded-md px-4 py-2">
+          </div>
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="game_time">Time</label>
+            <input type="time" id="game_time" name="game_time" class="border border-gray-300 rounded-md px-4 py-2">
+          </div>
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="host">Are you hosting?</label>
+            <select id="host" name="host" class="border border-gray-300 rounded-md px-4 py-2">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="game_location">Location</label>
+            <select id="game_location" name="game_location" class="border border-gray-300 rounded-md px-4 py-2">
+              <option value="">Select your city</option>
+              <option value="Albuquerque, NM">Albuquerque, NM</option>
+              <option value="Atlanta, GA">Atlanta, GA</option>
+              <option value="Austin, TX">Austin, TX</option>
+              <option value="Baltimore, MD">Baltimore, MD</option>
+              <option value="Boston, MA">Boston, MA</option>
+              <option value="Charlotte, NC">Charlotte, NC</option>
+              <option value="Chicago, IL">Chicago, IL</option>
+              <option value="Colorado Springs, CO">Colorado Springs, CO</option>
+              <option value="Columbus, OH">Columbus, OH</option>
+              <option value="Dallas, TX">Dallas, TX</option>
+              <option value="Denver, CO">Denver, CO</option>
+              <option value="Detroit, MI">Detroit, MI</option>
+              <option value="El Paso, TX">El Paso, TX</option>
+              <option value="Fort Worth, TX">Fort Worth, TX</option>
+              <option value="Fresno, CA">Fresno, CA</option>
+              <option value="Houston, TX">Houston, TX</option>
+              <option value="Indianapolis, IN">Indianapolis, IN</option>
+              <option value="Jacksonville, FL">Jacksonville, FL</option>
+              <option value="Kansas City, MO">Kansas City, MO</option>
+              <option value="Las Vegas, NV">Las Vegas, NV</option>
+              <option value="Long Beach, CA">Long Beach, CA</option>
+              <option value="Los Angeles, CA">Los Angeles, CA</option>
+              <option value="Louisville, KY">Louisville, KY</option>
+              <option value="Memphis, TN">Memphis, TN</option>
+              <option value="Mesa, AZ">Mesa, AZ</option>
+              <option value="Miami, FL">Miami, FL</option>
+              <option value="Milwaukee, WI">Milwaukee, WI</option>
+              <option value="Nashville, TN">Nashville, TN</option>
+              <option value="New York, NY">New York, NY</option>
+              <option value="Oklahoma City, OK">Oklahoma City, OK</option>
+              <option value="Philadelphia, PA">Philadelphia, PA</option>
+              <option value="Phoenix, AZ">Phoenix, AZ</option>
+              <option value="Portland, OR">Portland, OR</option>
+              <option value="Raleigh, NC">Raleigh, NC</option>
+              <option value="Sacramento, CA">Sacramento, CA</option>
+              <option value="San Antonio, TX">San Antonio, TX</option>
+              <option value="San Diego, CA">San Diego, CA</option>
+              <option value="San Francisco, CA">San Francisco, CA</option>
+              <option value="San Jose, CA">San Jose, CA</option>
+              <option value="Seattle, WA">Seattle, WA</option>
+              <option value="Tucson, AZ">Tucson, AZ</option>
+              <option value="Virginia Beach, VA">Virginia Beach, VA</option>
+              <option value="Washington, D.C.">Washington, D.C.</option>                        
+            </select>
+            </div>
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="alt_host">If not, what is the name of the user who is?</label>
+            <input type="text" id="alt_host" name="alt_host" placeholder="Enter User" class="border border-gray-300 rounded-md px-4 py-2">
+          </div>
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="player_amount">Max # of People?</label>
+            <select id="player_amount" name="player_amount" class="border border-gray-300 rounded-md px-4 py-2">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>'
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="input-box bg-white rounded-md p-4">
+            <label for="night_description">Description</label>
+            <input type="text" id="night_description" name="night_description" placeholder="Enter your Description" class="border border-gray-300 rounded-md px-4 py-2">
+          </div>
+        </div>
+        <div class="button mt-4 col-span-2 flex justify-center">
+          <input type="submit" value="Submit Game Night" class="button bg-green-500 hover:bg-green-600">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+  <script>
+      VANTA.WAVES('#my-background')
+  </script>
+
+</body>
+</html>

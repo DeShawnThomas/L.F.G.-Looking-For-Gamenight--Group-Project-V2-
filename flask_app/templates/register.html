@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Registration</title>
+</head>
+<body id ="my-background">
+    <div class="container mx-auto main-container">
+        <a href="{{ url_for('login') }}" class="float-right text-white">Already have an account? Click here to login.</a>
+        <div class="title text-4xl font-bold text-white mb-8">Registration</div>
+        <div class="content bg-white rounded-lg p-8 border-2 border-black">
+            <form action="/create" method="post" enctype="multipart/form-data">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="first_name">First Name:</label>
+                        </span>
+                        <input type="text" id="first_name" name="first_name" placeholder="Enter your name" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="last_name">Last Name:</label>
+                        </span>
+                        <input type="text" id="last_name" name="last_name" placeholder="Enter your username" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="email">Email:</label>
+                        </span>
+                        <input type="text" id="email" name="email" placeholder="Enter your email" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="phone_number">Phone Number:</label>
+                        </span>
+                        <input type="text" id="phone_number" name="phone_number" placeholder="Enter your number" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="password">Password:</label>
+                        </span>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="confirm_password">Confirm Password:</label>
+                        </span>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="user_description">About Me:</label>
+                        </span>
+                        <textarea id="user_description" name="user_description" placeholder="Tell us about yourself" class="border border-gray-300 p-2 rounded-md w-full"></textarea>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">
+                            <label for="user_location">Location:</label>
+                        </span>
+                        <select id="user_location" name="user_location" class="border border-gray-300 p-2 rounded-md w-full">
+                            <option value="">Select your city</option>
+                            <option value="Albuquerque, NM">Albuquerque, NM</option>
+                            <option value="Atlanta, GA">Atlanta, GA</option>
+                            <option value="Austin, TX">Austin, TX</option>
+                            <option value="Baltimore, MD">Baltimore, MD</option>
+                            <option value="Boston, MA">Boston, MA</option>
+                            <option value="Charlotte, NC">Charlotte, NC</option>
+                            <option value="Chicago, IL">Chicago, IL</option>
+                            <option value="Colorado Springs, CO">Colorado Springs, CO</option>
+                            <option value="Columbus, OH">Columbus, OH</option>
+                            <option value="Dallas, TX">Dallas, TX</option>
+                            <option value="Denver, CO">Denver, CO</option>
+                            <option value="Detroit, MI">Detroit, MI</option>
+                            <option value="El Paso, TX">El Paso, TX</option>
+                            <option value="Fort Worth, TX">Fort Worth, TX</option>
+                            <option value="Fresno, CA">Fresno, CA</option>
+                            <option value="Houston, TX">Houston, TX</option>
+                            <option value="Indianapolis, IN">Indianapolis, IN</option>
+                            <option value="Jacksonville, FL">Jacksonville, FL</option>
+                            <option value="Kansas City, MO">Kansas City, MO</option>
+                            <option value="Las Vegas, NV">Las Vegas, NV</option>
+                            <option value="Long Beach, CA">Long Beach, CA</option>
+                            <option value="Los Angeles, CA">Los Angeles, CA</option>
+                            <option value="Louisville, KY">Louisville, KY</option>
+                            <option value="Memphis, TN">Memphis, TN</option>
+                            <option value="Mesa, AZ">Mesa, AZ</option>
+                            <option value="Miami, FL">Miami, FL</option>
+                            <option value="Milwaukee, WI">Milwaukee, WI</option>
+                            <option value="Nashville, TN">Nashville, TN</option>
+                            <option value="New York, NY">New York, NY</option>
+                            <option value="Oklahoma City, OK">Oklahoma City, OK</option>
+                            <option value="Philadelphia, PA">Philadelphia, PA</option>
+                            <option value="Phoenix, AZ">Phoenix, AZ</option>
+                            <option value="Portland, OR">Portland, OR</option>
+                            <option value="Raleigh, NC">Raleigh, NC</option>
+                            <option value="Sacramento, CA">Sacramento, CA</option>
+                            <option value="San Antonio, TX">San Antonio, TX</option>
+                            <option value="San Diego, CA">San Diego, CA</option>
+                            <option value="San Francisco, CA">San Francisco, CA</option>
+                            <option value="San Jose, CA">San Jose, CA</option>
+                            <option value="Seattle, WA">Seattle, WA</option>
+                            <option value="Tucson, AZ">Tucson, AZ</option>
+                            <option value="Virginia Beach, VA">Virginia Beach, VA</option>
+                            <option value="Washington, D.C.">Washington, D.C.</option>                        
+                        </select>
+                    </div>
+                <div class="option-details mt-6"> 
+                    <span class="host-title">Can You Host?</span>
+                    <div class="category">
+                        <select id="can_host" name="can_host" class="border border-gray-300 p-2 rounded-md">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        <label for="user_image">Profile Picture:</label>
+                    </span>
+                    <input type="file" id="user_image" name="user_image" accept="image/*" class="border border-gray-300 p-2 rounded-md">
+                </div>
+                <div class="button mt-6">
+                    <input type="submit" value="Register" class="bg-blue-900 text-white font-semibold px-4 py-2 rounded-md">
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES('#my-background')
+    </script>
+
+</body>
+</html>

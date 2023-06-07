@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Edit Profile</title>
+</head>
+<body id="my-background">
+    <div class="nav3 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
+        <h1 class="text-2xl font-bold">L.F.G.</h1>
+        <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+    </div>
+    <div class="container mx-auto main-container">
+        <div class="content bg-white rounded-lg p-8 border-2 border-black mx-auto max-w-lg mt-8">
+            <div class="title text-center text-3xl text-red-700 font-bold mt-3">Edit Profile Information</div>
+
+            <form action="/user/update/{{ user.id }}" method="post" enctype="multipart/form-data">
+                <div class="user-details">
+                    <div class="input-box my-4">
+                        <span class="details">First Name:</span>
+                        <input type="text" name="first_name" placeholder="Enter your name" value="{{ user.first_name }}" required class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Last Name:</span>
+                        <input type="text" name="last_name" placeholder="Enter your username" value="{{ user.last_name }}" required class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Email:</span>
+                        <input type="email" name="email" placeholder="Enter your email" value="{{ user.email }}" required class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Phone Number:</span>
+                        <input type="text" name="phone_number" placeholder="Enter your number" value="{{ user.phone_number }}" required class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Password:</span>
+                        <input type="password" name="password" placeholder="Enter your password" required class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Confirm Password:</span>
+                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Location:</span>
+                        <select name="user_location" class="border border-gray-300 p-2 rounded-md w-full">
+                            <option value="Albuquerque, NM" {% if user.user_location == 'Albuquerque, NM' %}selected{% endif %}>Albuquerque, NM</option>
+                            <option value="Atlanta, GA" {% if user.user_location == 'Atlanta, GA' %}selected{% endif %}>Atlanta, GA</option>
+                            <option value="Austin, TX" {% if user.user_location == 'Austin, TX' %}selected{% endif %}>Austin, TX</option>
+                            <option value="Baltimore, MD" {% if user.user_location == 'Baltimore, MD' %}selected{% endif %}>Baltimore, MD</option>
+                            <option value="Boston, MA" {% if user.user_location == 'Boston, MA' %}selected{% endif %}>Boston, MA</option>
+                            <option value="Charlotte, NC" {% if user.user_location == 'Charlotte, NC' %}selected{% endif %}>Charlotte, NC</option>
+                            <option value="Chicago, IL" {% if user.user_location == 'Chicago, IL' %}selected{% endif %}>Chicago, IL</option>
+                            <option value="Colorado Springs, CO" {% if user.user_location == 'Colorado Springs, CO' %}selected{% endif %}>Colorado Springs, CO</option>
+                            <option value="Columbus, OH" {% if user.user_location == 'Columbus, OH' %}selected{% endif %}>Columbus, OH</option>
+                            <option value="Dallas, TX" {% if user.user_location == 'Dallas, TX' %}selected{% endif %}>Dallas, TX</option>
+                            <option value="Denver, CO" {% if user.user_location == 'Denver, CO' %}selected{% endif %}>Denver, CO</option>
+                            <option value="Detroit, MI" {% if user.user_location == 'Detroit, MI' %}selected{% endif %}>Detroit, MI</option>
+                            <option value="El Paso, TX" {% if user.user_location == 'El Paso, TX' %}selected{% endif %}>El Paso, TX</option>
+                            <option value="Fort Worth, TX" {% if user.user_location == 'Fort Worth, TX' %}selected{% endif %}>Fort Worth, TX</option>
+                            <option value="Fresno, CA" {% if user.user_location == 'Fresno, CA' %}selected{% endif %}>Fresno, CA</option>
+                            <option value="Houston, TX" {% if user.user_location == 'Houston, TX' %}selected{% endif %}>Houston, TX</option>
+                            <option value="Indianapolis, IN" {% if user.user_location == 'Indianapolis, IN' %}selected{% endif %}>Indianapolis, IN</option>
+                            <option value="Jacksonville, FL" {% if user.user_location == 'Jacksonville, FL' %}selected{% endif %}>Jacksonville, FL</option>
+                            <option value="Kansas City, MO" {% if user.user_location == 'Kansas City, MO' %}selected{% endif %}>Kansas City, MO</option>
+                            <option value="Las Vegas, NV" {% if user.user_location == 'Las Vegas, NV' %}selected{% endif %}>Las Vegas, NV</option>
+                            <option value="Long Beach, CA" {% if user.user_location == 'Long Beach, CA' %}selected{% endif %}>Long Beach, CA</option>
+                            <option value="Los Angeles, CA" {% if user.user_location == 'Los Angeles, CA' %}selected{% endif %}>Los Angeles, CA</option>
+                            <option value="Louisville, KY" {% if user.user_location == 'Louisville, KY' %}selected{% endif %}>Louisville, KY</option>
+                            <option value="Memphis, TN" {% if user.user_location == 'Memphis, TN' %}selected{% endif %}>Memphis, TN</option>
+                            <option value="Mesa, AZ" {% if user.user_location == 'Mesa, AZ' %}selected{% endif %}>Mesa, AZ</option>
+                            <option value="Miami, FL" {% if user.user_location == 'Miami, FL' %}selected{% endif %}>Miami, FL</option>
+                            <option value="Milwaukee, WI" {% if user.user_location == 'Milwaukee, WI' %}selected{% endif %}>Milwaukee, WI</option>
+                            <option value="Nashville, TN" {% if user.user_location == 'Nashville, TN' %}selected{% endif %}>Nashville, TN</option>
+                            <option value="New York, NY" {% if user.user_location == 'New York, NY' %}selected{% endif %}>New York, NY</option>
+                            <option value="Oklahoma City, OK" {% if user.user_location == 'Oklahoma City, OK' %}selected{% endif %}>Oklahoma City, OK</option>
+                            <option value="Philadelphia, PA" {% if user.user_location == 'Philadelphia, PA' %}selected{% endif %}>Philadelphia, PA</option>
+                            <option value="Phoenix, AZ" {% if user.user_location == 'Phoenix, AZ' %}selected{% endif %}>Phoenix, AZ</option>
+                            <option value="Portland, OR" {% if user.user_location == 'Portland, OR' %}selected{% endif %}>Portland, OR</option>
+                            <option value="Raleigh, NC" {% if user.user_location == 'Raleigh, NC' %}selected{% endif %}>Raleigh, NC</option>
+                            <option value="Sacramento, CA" {% if user.user_location == 'Sacramento, CA' %}selected{% endif %}>Sacramento, CA</option>
+                            <option value="San Antonio, TX" {% if user.user_location == 'San Antonio, TX' %}selected{% endif %}>San Antonio, TX</option>
+                            <option value="San Diego, CA" {% if user.user_location == 'San Diego, CA' %}selected{% endif %}>San Diego, CA</option>
+                            <option value="San Francisco, CA" {% if user.user_location == 'San Francisco, CA' %}selected{% endif %}>San Francisco, CA</option>
+                            <option value="San Jose, CA" {% if user.user_location == 'San Jose, CA' %}selected{% endif %}>San Jose, CA</option>
+                            <option value="Seattle, WA" {% if user.user_location == 'Seattle, WA' %}selected{% endif %}>Seattle, WA</option>
+                            <option value="Tucson, AZ" {% if user.user_location == 'Tucson, AZ' %}selected{% endif %}>Tucson, AZ</option>
+                            <option value="Virginia Beach, VA" {% if user.user_location == 'Virginia Beach, VA' %}selected{% endif %}>Virginia Beach, VA</option>
+                            <option value="Washington, D.C." {% if user.user_location == 'Washington, D.C.' %}selected{% endif %}>Washington, D.C.</option>
+                        </select>
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Description:</span>
+                        <textarea name="user_description" placeholder="Enter your description" class="border border-gray-300 p-2 rounded-md w-full">{{ user.user_description }}</textarea>
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Profile Picture:</span>
+                        <input type="file" name="user_image" accept="image/*" class="border border-gray-300 p-2 rounded-md w-full">
+                    </div>
+                    <div class="input-box my-4">
+                        <span class="details">Can You Host?</span>
+                        <select name="can_host" class="border border-gray-300 p-2 rounded-md w-full">
+                            <option value="Yes" {% if user.can_host == 'Yes' %}selected{% endif %}>Yes</option>
+                            <option value="No" {% if user.can_host == 'No' %}selected{% endif %}>No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button text-center mt-8">
+                    <input type="submit" value="Update Profile" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES('#my-background')
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Edit Game</title>
+</head>
+<style>
+    body {
+        position: relative;
+        min-height: 100vh; /* Ensure body takes up at least the full viewport height */
+    }
+
+    #my-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+</style>
+<body id ="my-background">
+    <div class="nav4 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
+        <h1 class="text-2xl font-bold">L.F.G.</h1>
+        <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+    </div>
+
+    <div class="addgame-container mx-auto max-w-2xl bg-gray-300 p-8 rounded border-2 border-black mt-8">
+        <div class="add-game-title text-center text-3xl text-green-700 font-bold">
+            <p>Edit Game Details</p>
+        </div>
+
+        <form method="POST" action="/edit/game/{{game.id}}/update" class="mt-8">
+            <div class="mb-4">
+                <label for="game_name" class="block text-lg font-medium">Name of Game</label>
+                <input type="text" class="form-input mt-1 block w-full" id="game_name" name="game_name" value="{{ game.game_name }}" required>
+            </div>
+            <div class="mb-4">
+                <label for="game_type" class="block text-lg font-medium">Type of Game</label>
+                <input type="text" class="form-input mt-1 block w-full" id="game_type" name="game_type" value="{{ game.game_type }}" required>
+            </div>
+            <div class="mb-4">
+                <label for="game_description" class="block text-lg font-medium">Game Description</label>
+                <textarea class="form-textarea mt-1 block w-full" id="game_description" name="game_description" required>{{ game.game_description }}</textarea>
+            </div>
+            <input type="hidden" id="game_image" name="game_image" value="default_image.jpg">
+            <button type="submit" class="button bg-green-500 hover:bg-green-600 text-white px-4 py-2">Finish Edit</button>
+        </form>
+
+        <div class="flex justify-between mt-4">
+            <div></div>
+            <a href="/collection" class="button bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2">Back to Collection</a>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES('#my-background')
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Edit Game Night</title>
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh; /* Ensure body takes up at least the full viewport height */
+        }
+
+        #my-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body id ="my-background">
+    
+    <div id="background-container"></div>
+
+    <div class="nav7 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
+        <h1 class="text-2xl font-bold">Edit Game Night</h1>
+        <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+    </div>
+
+    <div class="flex justify-center mt-8">
+        <form action="/gamenights/{{ night.id }}/update" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label for="host" class="block text-gray-700 text-sm font-bold mb-2">Host:</label>
+                <input type="text" name="host" id="host" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" value="{{ night.host }}">
+            </div>
+            <div class="mb-4">
+                <label for="alt_host" class="block text-gray-700 text-sm font-bold mb-2">Alternate Host:</label>
+                <input type="text" name="alt_host" id="alt_host" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" value="{{ night.alt_host }}">
+            </div>
+            <div class="mb-4">
+                <label for="player_amount" class="block text-gray-700 text-sm font-bold mb-2">Player Amount:</label>
+                <input type="number" name="player_amount" id="player_amount" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" value="{{ night.player_amount }}">
+            </div>
+            <div class="mb-4">
+                <label for="game_location" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+                <input type="text" name="game_location" id="game_location" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" value="{{ night.game_location }}">
+            </div>
+            <div class="mb-4">
+                <label for="game_date" class="block text-gray-700 text-sm font-bold mb-2">Date:</label>
+                <input type="date" name="game_date" id="game_date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" value="{{ night.game_date.strftime('%Y-%m-%d') }}">
+            </div>
+            <div class="mb-4">
+                <label for="game_time" class="block text-gray-700 text-sm font-bold mb-2">Time:</label>
+                <input type="time" name="game_time" id="game_time" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" value="{{ night.game_time.strftime('%H:%M') }}">
+            </div>
+            <div class="mb-4">
+                <label for="night_description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+                <textarea name="night_description" id="night_description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" rows="5">{{ night.night_description }}</textarea>
+            </div>
+            <div class="flex items-center justify-center mt-6">
+                <button type="submit" class="bg-green-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Update</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES('#my-background')
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>My Game Nights</title>
+</head>
+<body id ="my-background">
+    <div class="nav7 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
+        <h1 class="text-2xl font-bold">My Game Nights</h1>
+        <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+    </div>
+
+    <div class="flex justify-center space-x-4">
+    {% for night in game_nights %}
+        <div class="max-w-lg w-full rounded overflow-hidden shadow-lg bg-gray-300 border border-black text-black text-center m-4">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-bold">Am I hosting?: {{ night.host }}</h2>
+                <p class="text-lg font-bold">If not, who is?: {{ night.alt_host }}</p>
+                <p class="text-lg font-bold mb-2">Player Amount: {{ night.player_amount }}</p>
+                <p class="text-lg text-red-700 font-extrabold">Game Time: {{ night.game_time.strftime('%I:%M %p') }}</p>
+                <p class="text-lg text-red-700 font-extrabold">Location: {{ night.game_location }}</p>
+                <p class="text-lg text-red-700 font-extrabold mb-2">Date: {{ night.game_date.strftime('%B %dth, %Y') }}</p>
+                <p class="text-lg text-blue-700 font-bold">Description: {{ night.night_description }}</p>    
+            </div>
+            <div class="px-6 py-4 flex justify-between">
+                <a href="/gamenights/{{night.id}}/edit" class="button bg-green-500 hover:bg-green-600">Edit Details</a>
+                <a href="/gamenights/{{night.id}}/delete" class="button bg-yellow-500 hover:bg-yellow-600">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES('#my-background')
+    </script>
+
+</body>
+</html>
