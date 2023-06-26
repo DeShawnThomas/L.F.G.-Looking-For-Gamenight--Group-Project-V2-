@@ -4,15 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Registration</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            overflow: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        #my-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
 </head>
-<body id ="my-background">
+
+<body>
+    <div id="my-background"></div>
     <div class="container mx-auto main-container">
         <a href="{{ url_for('login') }}" class="float-right text-white">Already have an account? Click here to login.</a>
         <div class="title text-4xl font-bold text-white mb-8">Registration</div>
         <div class="content bg-white rounded-lg p-8 border-2 border-black">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="bg-red-500 text-white p-4 mb-4">
+                        <ul class="list-disc pl-4">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endwith %}
+
             <form action="/create" method="post" enctype="multipart/form-data">
                 <div class="user-details">
                     <div class="input-box">

@@ -30,8 +30,7 @@ def game_night_hosting():
         'game_location': request.form['game_location'],
         'game_date': request.form['game_date'],
         'game_time': request.form['game_time'],
-        'night_description': request.form['night_description'],
-        'event_type': 'Game Night',
+        'night_description': request.formS['night_description']
     }
     
     Night.save_night(data)

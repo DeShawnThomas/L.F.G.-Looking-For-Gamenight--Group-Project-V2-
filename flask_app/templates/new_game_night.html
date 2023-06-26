@@ -11,11 +11,22 @@
 <body id ="my-background">
   <div class="nav3 flex justify-between items-center py-4 px-8 bg-blue-900 text-white">
     <h1 class="text-2xl font-bold">New Game Night</h1>
-    <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600">Dashboard</a>
+    <a href="/dashboard" class="dashboard button bg-red-500 hover:bg-red-600  text-white font-bold py-2 px-4 rounded mt-2">Dashboard</a>
   </div>
 
   <div class="container mx-auto mt-8">
     <div class="content bg-gray-300 rounded-lg border-2 border-black p-8">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="bg-red-500 text-white p-4 mb-4">
+                <ul class="list-disc pl-4">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
       <form action="/new/night/entry" method="post">
         <div class="grid grid-cols-2 gap-4">
           <div class="input-box bg-white rounded-md p-4">
@@ -107,7 +118,7 @@
           </div>
         </div>
         <div class="button mt-4 col-span-2 flex justify-center">
-          <input type="submit" value="Submit Game Night" class="button bg-green-500 hover:bg-green-600">
+          <input type="submit" value="Submit Game Night" class="button bg-green-500 hover:bg-green-600  text-white font-bold py-2 px-4 rounded mt-2">
         </div>
       </form>
     </div>

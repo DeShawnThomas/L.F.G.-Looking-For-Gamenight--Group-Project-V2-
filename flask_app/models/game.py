@@ -110,3 +110,17 @@ class Game:
             game_object = cls(game_data)
             game_object_list.append(game_object)
         return game_object_list
+    
+    @staticmethod
+    def validate_game(game):
+        is_valid = True
+        if len(game['game_name']) < 2:
+            flash("The name of the game must be at least 2 characters")
+            is_valid= False
+        if len(game['game_type']) < 2:
+            flash("Type of game must be at least 2 characters. If you don't have one please enter 'N/A'.")
+            is_valid= False
+        if len(game['game_description']) < 1:
+            flash("Please enter a sentence or two describing the game.")
+            is_valid=False
+        return is_valid

@@ -148,3 +148,23 @@ class Night:
             night_object.creator = user_object
             night_object_list.append(night_object)
         return night_object_list
+    
+    @staticmethod
+    def validate_night(night):
+        is_valid = True
+        if night['game_date'] == "":
+            flash("Please enter a date for the game night.")
+            is_valid= False
+        if night['game_time'] == "":
+            flash("Please enter a time for the game night.")
+            is_valid= False
+        if night['game_location'] == "":
+            flash("Please select the city your game night will be in.")
+            is_valid=False
+        if len(night['alt_host']) < 2:
+            flash("Alternate host must be at least 2 characters. If you are hosting, please enter N/A.")
+            is_valid= False
+        if len(night['night_description']) < 2:
+            flash("Please enter a description for your game night. A few sentences will do.")
+            is_valid= False
+        return is_valid
