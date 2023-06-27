@@ -30,7 +30,7 @@ Using Python and the Flask framework, we successfully created L.F.G. to fulfill 
 
 ![dashboard](/flask_app/static/img/lfg-dashboard.PNG)
 
-![game collection](/flask_app/static/img/kda-screenshot-3-stats.png)
+![game collection](/flask_app/static/img/lfg-mygames.PNG)
 
 ## Links 
 
