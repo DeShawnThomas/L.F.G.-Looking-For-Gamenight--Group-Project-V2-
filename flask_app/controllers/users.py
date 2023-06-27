@@ -1,4 +1,4 @@
-from flask import render_template,request,session,redirect,flash, send_from_directory
+from flask import render_template, request, session, redirect, flash, send_from_directory
 from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.night import Night
@@ -6,26 +6,27 @@ from flask_bcrypt import Bcrypt
 import os
 from werkzeug.utils import secure_filename
 
-# from flask_app import (placeholder incase we end up needing to import some icons)
-
 bcrypt = Bcrypt(app)
 
 UPLOAD_FOLDER = os.path.join(app.root_path, 'static', 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
+# Route for the home page
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# Route for the registration page
 @app.route('/register')
 def register():
     return render_template('register.html')
 
+# Route for the login page
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+# Route for creating a new user
 @app.route('/create', methods=['POST'])
 def create_user():
     if not User.validate_user(request.form):
@@ -65,6 +66,7 @@ def create_user():
 
     return redirect('/dashboard')
 
+# Route for logging in a user
 @app.route('/returning', methods=['POST'])
 def login_user():
     email_or_phone = request.form['email']
@@ -82,10 +84,12 @@ def login_user():
 
     return redirect('/dashboard')
 
+# Route for serving uploaded files
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+# Route for the user dashboard
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
@@ -96,25 +100,27 @@ def dashboard():
 
     return render_template('dashboard.html', user=user, game_nights=game_nights)
 
-
+# Route for viewing a user's profile
 @app.route('/user/<int:user_id>')
 def user_profile(user_id):
     if 'user_id' not in session:
         return redirect('/logout')
-    
+
     user = User.get_by_id(user_id)
 
     return render_template('my_profile.html', user=user)
 
+# Route for editing a user's profile
 @app.route('/user/edit/<int:user_id>')
 def edit_user(user_id):
     if 'user_id' not in session:
         return redirect('/logout')
-    
+
     user = User.get_by_id(user_id)
 
     return render_template('edit_profile.html', user=user)
 
+# Route for updating a user's profile
 @app.route('/user/update/<int:user_id>', methods=['POST'])
 def update_user(user_id):
     if 'user_id' not in session:
@@ -157,6 +163,7 @@ def update_user(user_id):
 
     return redirect(f'/user/{user_id}')
 
+# Route for logging out the user
 @app.route('/logout')
 def logout():
     session.clear()
